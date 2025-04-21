@@ -1,9 +1,4 @@
-// ✅ Make sure this is a standard exported function, not const arrow function.
 import { notFound } from 'next/navigation';
-
-export async function generateStaticParams() {
-  return Object.keys(mockPosts).map((slug) => ({ slug }));
-}
 
 const mockPosts = {
   rants: [
@@ -19,6 +14,10 @@ const mockPosts = {
   advice: [],
   confessions: [],
 };
+
+export async function generateStaticParams() {
+  return Object.keys(mockPosts).map((slug) => ({ slug }));
+}
 
 type CategoryPageProps = {
   params: { slug: string };
