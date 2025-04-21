@@ -1,11 +1,8 @@
-// File: /src/app/category/[slug]/page.tsx
-
+// ✅ Make sure this is a standard exported function, not const arrow function.
 import { notFound } from 'next/navigation';
 
-interface PageProps {
-  params: {
-    slug: string;
-  };
+export async function generateStaticParams() {
+  return Object.keys(mockPosts).map((slug) => ({ slug }));
 }
 
 const mockPosts = {
@@ -23,7 +20,11 @@ const mockPosts = {
   confessions: [],
 };
 
-export default function CategoryPage({ params }: PageProps) {
+type CategoryPageProps = {
+  params: { slug: string };
+};
+
+export default function CategoryPage({ params }: CategoryPageProps) {
   const { slug } = params;
   const posts = mockPosts[slug as keyof typeof mockPosts];
 
