@@ -15,16 +15,15 @@ const mockPosts = {
   confessions: [],
 };
 
-// ✅ Correctly typed static params function
-export async function generateStaticParams(): Promise<{ slug: string }[]> {
+export async function generateStaticParams() {
   return Object.keys(mockPosts).map((slug) => ({ slug }));
 }
 
-type CategoryPageProps = {
+interface CategoryPageProps {
   params: { slug: string };
-};
+}
 
-export default function CategoryPage({ params }: CategoryPageProps) {
+const CategoryPage = ({ params }: CategoryPageProps) => {
   const { slug } = params;
   const posts = mockPosts[slug as keyof typeof mockPosts];
 
@@ -54,4 +53,6 @@ export default function CategoryPage({ params }: CategoryPageProps) {
       </div>
     </main>
   );
-}
+};
+
+export default CategoryPage;
