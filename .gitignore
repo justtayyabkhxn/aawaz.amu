@@ -1,7 +1,4 @@
 node_modules
 .env
-/.next
 .next
-/client/.next/
 build
-.next

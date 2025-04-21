@@ -4,38 +4,7 @@ import React from "react";
 import Link from "next/link";
 
 export default function Home() {
-  const categories = [
-    {
-      title: "Rants",
-      color: "bg-red-500",
-      description: "Let it all out. Share your frustrations anonymously.",
-    },
-    {
-      title: "Complaints",
-      color: "bg-rose-900",
-      description: "Voice issues about campus, hostel, academics, or anything.",
-    },
-    {
-      title: "Suggestions",
-      color: "bg-green-500",
-      description: "Got ideas to improve amu? Drop them here.",
-    },
-    {
-      title: "Protests",
-      color: "bg-indigo-500",
-      description: "Call for unity and action on matters that matter.",
-    },
-    {
-      title: "Advice",
-      color: "bg-blue-500",
-      description: "Seeking guidance or want to help others? Post here.",
-    },
-    {
-      title: "Confessions",
-      color: "bg-pink-500",
-      description: "Reveal secrets or feelings you couldn't share elsewhere.",
-    },
-  ];
+  
 
   return (
     <div className="min-h-screen bg-zinc-900 text-white">
