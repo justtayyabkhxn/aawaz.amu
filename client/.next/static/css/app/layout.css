@@ -62,6 +62,7 @@
       "Courier New", monospace;
     --color-red-500: oklch(63.7% 0.237 25.331);
     --color-orange-300: oklch(83.7% 0.128 66.29);
+    --color-yellow-400: oklch(85.2% 0.199 91.936);
     --color-green-500: oklch(72.3% 0.219 149.579);
     --color-blue-500: oklch(62.3% 0.214 259.815);
     --color-blue-600: oklch(54.6% 0.245 262.881);
@@ -361,6 +362,9 @@
   }
   .bg-white {
     background-color: var(--color-white);
+  }
+  .bg-yellow-400 {
+    background-color: var(--color-yellow-400);
   }
   .bg-zinc-800 {
     background-color: var(--color-zinc-800);

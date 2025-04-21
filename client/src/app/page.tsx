@@ -62,29 +62,74 @@ export default function Home() {
         <p className="mt-2 text-zinc-400 text-lg">
           Confess. Protest. Suggest. Be heard.
         </p>
-        <p className="text-zinc-400 text-md font-bold">Only on <span className="text-orange-300">
-        Aawaz.amu.
-          </span> </p>
+        <p className="text-zinc-400 text-md font-bold">
+          Only on <span className="text-orange-300">Aawaz.amu.</span>{" "}
+        </p>
       </div>
 
       {/* Category Cards */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto mt-12 px-4 text-shadow-lg/15">
-        {categories.map((cat) => (
-          <Link
-            key={cat.title}
-            href={`/category/${cat.title.toLowerCase().replace(/\\s+/g, "-")}`}
-            className="block"
-          >
-            <div
-              className={`rounded-2xl p-6 ${cat.color} shadow-lg hover:scale-105 transform transition duration-300 cursor-pointer`}
-            >
-              <h3 className="text-xl font-bold mb-2 text-white/200">{cat.title}</h3>
-              <p className="text-sm font-medium leading-snug text-white/90">
-                {cat.description}
-              </p>
-            </div>
-          </Link>
-        ))}
+        <Link href="/category/rants" className="block">
+          <div className="rounded-2xl p-6 bg-red-500 shadow-lg hover:scale-105 transform transition duration-300 cursor-pointer">
+            <h3 className="text-xl font-bold mb-2 text-white/200">Rants</h3>
+            <p className="text-sm font-medium leading-snug text-white/90">
+              Let it all out. Share your frustrations anonymously.
+            </p>
+          </div>
+        </Link>
+
+        <Link href="/category/complaints" className="block">
+          <div className="rounded-2xl p-6 bg-yellow-400 shadow-lg hover:scale-105 transform transition duration-300 cursor-pointer">
+            <h3 className="text-xl font-bold mb-2 text-white/200">
+              Complaints
+            </h3>
+            <p className="text-sm font-medium leading-snug text-white/90">
+              Voice issues about campus, hostel, academics, or anything.
+            </p>
+          </div>
+        </Link>
+
+        <Link href="/category/suggestions" className="block">
+          <div className="rounded-2xl p-6 bg-green-500 shadow-lg hover:scale-105 transform transition duration-300 cursor-pointer">
+            <h3 className="text-xl font-bold mb-2 text-white/200">
+              Suggestions
+            </h3>
+            <p className="text-sm font-medium leading-snug text-white/90">
+              Got ideas to improve amu? Drop them here.
+            </p>
+          </div>
+        </Link>
+
+        <Link href="/category/protest-calls" className="block">
+          <div className="rounded-2xl p-6 bg-indigo-500 shadow-lg hover:scale-105 transform transition duration-300 cursor-pointer">
+            <h3 className="text-xl font-bold mb-2 text-white/200">
+              Protest Calls
+            </h3>
+            <p className="text-sm font-medium leading-snug text-white/90">
+              Call for unity and action on matters that matter.
+            </p>
+          </div>
+        </Link>
+
+        <Link href="/category/advice" className="block">
+          <div className="rounded-2xl p-6 bg-blue-500 shadow-lg hover:scale-105 transform transition duration-300 cursor-pointer">
+            <h3 className="text-xl font-bold mb-2 text-white/200">Advice</h3>
+            <p className="text-sm font-medium leading-snug text-white/90">
+              Seeking guidance or want to help others? Post here.
+            </p>
+          </div>
+        </Link>
+
+        <Link href="/category/confessions" className="block">
+          <div className="rounded-2xl p-6 bg-pink-500 shadow-lg hover:scale-105 transform transition duration-300 cursor-pointer">
+            <h3 className="text-xl font-bold mb-2 text-white/200">
+              Confessions
+            </h3>
+            <p className="text-sm font-medium leading-snug text-white/90">
+              Reveal secrets or feelings you couldn't share elsewhere.
+            </p>
+          </div>
+        </Link>
       </div>
 
       {/* Footer */}
