@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 
@@ -19,7 +19,10 @@ const SigninPage = () => {
     e.preventDefault();
 
     // Simulate sign-in logic (you can replace this with an actual API call)
-    if (formData.email === "test@example.com" && formData.password === "password") {
+    if (
+      formData.email === "test@example.com" &&
+      formData.password === "password"
+    ) {
       setError(""); // Clear error on successful login
       router.push("/"); // Redirect to the homepage after successful login
     } else {
@@ -30,12 +33,17 @@ const SigninPage = () => {
   return (
     <main className="min-h-screen bg-zinc-900 text-white flex justify-center items-center px-4 py-12">
       <div className="max-w-md w-full bg-zinc-800 rounded-xl shadow-lg p-8">
-        <h1 className="text-4xl font-bold text-center mb-8 text-white">Sign In</h1>
+        <h1 className="text-4xl font-bold text-center mb-8 text-white">
+          Sign In
+        </h1>
 
         <form onSubmit={handleSubmit} className="space-y-6">
           {/* Email Field */}
           <div>
-            <label htmlFor="email" className="block text-sm font-medium text-white">
+            <label
+              htmlFor="email"
+              className="block text-sm font-medium text-white"
+            >
               Email
             </label>
             <input
@@ -51,7 +59,10 @@ const SigninPage = () => {
 
           {/* Password Field */}
           <div>
-            <label htmlFor="password" className="block text-sm font-medium text-white">
+            <label
+              htmlFor="password"
+              className="block text-sm font-medium text-white"
+            >
               Password
             </label>
             <input
@@ -81,7 +92,7 @@ const SigninPage = () => {
 
         <div className="mt-6 text-center">
           <p className="text-zinc-400 text-sm">
-            Don't have an account?{" "}
+            Don&apos;t have an account?{" "}
             <a href="/signup" className="text-blue-500 hover:underline">
               Sign Up
             </a>
