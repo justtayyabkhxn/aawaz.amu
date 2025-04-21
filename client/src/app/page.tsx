@@ -95,7 +95,7 @@ export default function Home() {
               Confessions
             </h3>
             <p className="text-sm font-medium leading-snug text-white/90">
-              Reveal secrets or feelings you couldn't share elsewhere.
+              Reveal secrets or feelings you couldnt share elsewhere.
             </p>
           </div>
         </Link>
