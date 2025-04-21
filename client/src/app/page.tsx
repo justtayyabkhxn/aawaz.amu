@@ -103,17 +103,17 @@ export default function Home() {
 
       {/* Footer */}
       <footer className="mt-20 py-6 text-center text-zinc-500 font-bold border-t border-zinc-700">
-        <p className="text-sm">
+        <p className="text-sm text-shadow-2xs">
           &copy; 2025 Aawaz.amu. Built with ❤️ for AMU Students.
         </p>
         <div className="mt-2 space-x-4 text-sm font-bold text-orange-300">
-          <Link href="#" className="hover:underline">
+          <Link href="/about" className="hover:underline">
             About
           </Link>
-          <Link href="#" className="hover:underline">
+          <Link href="/" className="hover:underline">
             Contact
           </Link>
-          <Link href="#" className="hover:underline">
+          <Link href="/privacy" className="hover:underline">
             Privacy
           </Link>
         </div>
