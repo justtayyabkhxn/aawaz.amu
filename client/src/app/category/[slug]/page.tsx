@@ -15,7 +15,8 @@ const mockPosts = {
   confessions: [],
 };
 
-export async function generateStaticParams() {
+// ✅ Correctly typed static params function
+export async function generateStaticParams(): Promise<{ slug: string }[]> {
   return Object.keys(mockPosts).map((slug) => ({ slug }));
 }
 
