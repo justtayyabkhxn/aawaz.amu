@@ -2,11 +2,11 @@
 
 import { notFound } from 'next/navigation';
 
-type Props = {
+interface PageProps {
   params: {
     slug: string;
   };
-};
+}
 
 const mockPosts = {
   rants: [
@@ -23,9 +23,8 @@ const mockPosts = {
   confessions: [],
 };
 
-const CategoryPage = ({ params }: Props) => {
+export default function CategoryPage({ params }: PageProps) {
   const { slug } = params;
-
   const posts = mockPosts[slug as keyof typeof mockPosts];
 
   if (!posts) return notFound();
@@ -54,6 +53,4 @@ const CategoryPage = ({ params }: Props) => {
       </div>
     </main>
   );
-};
-
-export default CategoryPage;
+}
