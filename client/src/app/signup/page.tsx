@@ -1,6 +1,7 @@
 "use client";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 const SignupPage = () => {
   const [formData, setFormData] = useState({
@@ -82,7 +83,7 @@ const SignupPage = () => {
               <button
                 type="button"
                 onClick={() => setShowPassword((prev) => !prev)}
-                className="absolute right-3 top-2/3 transform -translate-y-1/2 text-sm text-green-400 hover:underline"
+                className="absolute inset-y-0 right-3 text-sm text-green-400 hover:underline focus:outline-none cursor-pointer"
               >
                 {showPassword ? "Hide" : "Show"}
               </button>
@@ -107,7 +108,7 @@ const SignupPage = () => {
               <button
                 type="button"
                 onClick={() => setShowConfirmPassword((prev) => !prev)}
-                className="absolute right-3 top-2/3 transform -translate-y-1/2 text-sm text-green-400 hover:underline"
+                className="absolute inset-y-0 right-3 text-sm text-green-400 hover:underline focus:outline-none cursor-pointer"
               >
                 {showConfirmPassword ? "Hide" : "Show"}
               </button>
@@ -121,7 +122,7 @@ const SignupPage = () => {
           <div>
             <button
               type="submit"
-              className="w-full py-2 px-4 rounded-xl bg-green-500 hover:bg-green-600 text-white font-bold transition duration-300 text-shadow-lg/10"
+              className="w-full py-2 px-4 rounded-xl bg-green-500 hover:bg-green-600 text-white font-bold transition duration-300 text-shadow-lg/10 cursor-pointer"
             >
               Sign Up
             </button>
@@ -131,9 +132,9 @@ const SignupPage = () => {
         <div className="mt-6 text-center">
           <p className="text-zinc-400 text-sm text-shadow-lg/10 font-bold">
             Already have an account?{" "}
-            <a href="/signin" className="text-blue-500 hover:underline">
+            <Link href="/signin" className="text-blue-500 hover:underline">
               Log In
-            </a>
+            </Link>
           </p>
         </div>
       </div>

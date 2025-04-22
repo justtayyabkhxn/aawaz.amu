@@ -84,7 +84,7 @@ const SigninPage = () => {
               <button
                 type="button"
                 onClick={() => setShowPassword((prev) => !prev)}
-                className="absolute inset-y-0 right-3 text-sm text-green-400 hover:underline focus:outline-none"
+                className="absolute inset-y-0 right-3 text-sm text-green-400 hover:underline focus:outline-none cursor-pointer"
               >
                 {showPassword ? "Hide" : "Show"}
               </button>
@@ -98,7 +98,7 @@ const SigninPage = () => {
           <div>
             <button
               type="submit"
-              className="w-full py-2 px-4 rounded-xl bg-green-500 hover:bg-green-600 text-white font-bold transition duration-300 text-shadow-lg/15"
+              className="w-full py-2 px-4 rounded-xl bg-green-500 hover:bg-green-600 text-white font-bold transition duration-300 text-shadow-lg/15 cursor-pointer"
             >
               Log In
             </button>
