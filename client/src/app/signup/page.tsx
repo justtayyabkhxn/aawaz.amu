@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 
@@ -9,6 +9,8 @@ const SignupPage = () => {
     confirmPassword: "",
   });
   const [error, setError] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const router = useRouter();
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -19,28 +21,34 @@ const SignupPage = () => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
 
-    // Validate password match
     if (formData.password !== formData.confirmPassword) {
       setError("Passwords do not match.");
       return;
     }
 
-    // Simulate sign-up logic (you can replace this with an actual API call)
     if (formData.email && formData.password) {
-      setError(""); // Clear error on successful sign-up
-      router.push("/signin"); // Redirect to sign-in page after successful sign-up
+      setError("");
+      router.push("/signin");
     } else {
       setError("Please fill in all fields.");
     }
   };
 
   return (
-    <main className="min-h-screen bg-zinc-900 text-white flex justify-center items-center px-4 py-12">
+    <main className="min-h-screen bg-zinc-900 text-white flex flex-col items-center px-4 py-12">
+      {/* Site Heading */}
+      <h2
+        className="text-3xl font-bold mb-6 mt-10 text-white cursor-pointer "
+        onClick={() => router.push("/")}
+      >
+       📢Aawaz.amu
+      </h2>
+
       <div className="max-w-md w-full bg-zinc-800 rounded-xl shadow-lg p-8">
         <h1 className="text-4xl font-bold text-center mb-8 text-white">Sign Up</h1>
 
         <form onSubmit={handleSubmit} className="space-y-6">
-          {/* Email Field */}
+          {/* Email */}
           <div>
             <label htmlFor="email" className="block text-sm font-medium text-white">
               Email
@@ -56,36 +64,54 @@ const SignupPage = () => {
             />
           </div>
 
-          {/* Password Field */}
+          {/* Password */}
           <div>
             <label htmlFor="password" className="block text-sm font-medium text-white">
               Password
             </label>
-            <input
-              type="password"
-              name="password"
-              id="password"
-              value={formData.password}
-              onChange={handleChange}
-              required
-              className="mt-1 block w-full px-3 py-2 border border-zinc-700 rounded-xl text-white bg-zinc-800 focus:ring-2 focus:ring-green-500"
-            />
+            <div className="relative">
+              <input
+                type={showPassword ? "text" : "password"}
+                name="password"
+                id="password"
+                value={formData.password}
+                onChange={handleChange}
+                required
+                className="mt-1 block w-full px-3 py-2 border border-zinc-700 rounded-xl text-white bg-zinc-800 focus:ring-2 focus:ring-green-500"
+              />
+              <button
+                type="button"
+                onClick={() => setShowPassword((prev) => !prev)}
+                className="absolute right-3 top-2/3 transform -translate-y-1/2 text-sm text-green-400 hover:underline"
+              >
+                {showPassword ? "Hide" : "Show"}
+              </button>
+            </div>
           </div>
 
-          {/* Confirm Password Field */}
+          {/* Confirm Password */}
           <div>
             <label htmlFor="confirmPassword" className="block text-sm font-medium text-white">
               Confirm Password
             </label>
-            <input
-              type="password"
-              name="confirmPassword"
-              id="confirmPassword"
-              value={formData.confirmPassword}
-              onChange={handleChange}
-              required
-              className="mt-1 block w-full px-3 py-2 border border-zinc-700 rounded-xl text-white bg-zinc-800 focus:ring-2 focus:ring-green-500"
-            />
+            <div className="relative">
+              <input
+                type={showConfirmPassword ? "text" : "password"}
+                name="confirmPassword"
+                id="confirmPassword"
+                value={formData.confirmPassword}
+                onChange={handleChange}
+                required
+                className="mt-1 block w-full px-3 py-2 border border-zinc-700 rounded-xl text-white bg-zinc-800 focus:ring-2 focus:ring-green-500"
+              />
+              <button
+                type="button"
+                onClick={() => setShowConfirmPassword((prev) => !prev)}
+                className="absolute right-3 top-2/3 transform -translate-y-1/2 text-sm text-green-400 hover:underline"
+              >
+                {showConfirmPassword ? "Hide" : "Show"}
+              </button>
+            </div>
           </div>
 
           {/* Error Message */}
@@ -95,7 +121,7 @@ const SignupPage = () => {
           <div>
             <button
               type="submit"
-              className="w-full py-2 px-4 rounded-xl bg-green-500 hover:bg-green-600 text-white font-bold transition duration-300"
+              className="w-full py-2 px-4 rounded-xl bg-green-500 hover:bg-green-600 text-white font-bold transition duration-300 text-shadow-lg/10"
             >
               Sign Up
             </button>
@@ -103,10 +129,10 @@ const SignupPage = () => {
         </form>
 
         <div className="mt-6 text-center">
-          <p className="text-zinc-400 text-sm">
+          <p className="text-zinc-400 text-sm text-shadow-lg/10 font-bold">
             Already have an account?{" "}
             <a href="/signin" className="text-blue-500 hover:underline">
-              Sign In
+              Log In
             </a>
           </p>
         </div>

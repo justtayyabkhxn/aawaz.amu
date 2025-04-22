@@ -4,8 +4,6 @@ import React from "react";
 import Link from "next/link";
 
 export default function Home() {
-  
-
   return (
     <div className="min-h-screen bg-zinc-900 text-white">
       {/* Header */}
@@ -13,15 +11,15 @@ export default function Home() {
         <h1 className="text-2xl font-bold text-white">📢 Aawaz.amu</h1>
         <div className="space-x-4">
           <Link href="/signin">
-            <button className="bg-white text-black text-sm px-3 py-1 rounded-xl font-bold hover:bg-gray-200 cursor-pointer">
-              Sign In
+            <button className="bg-white text-black text-md px-3 py-1 rounded-xl font-bold hover:bg-gray-200 cursor-pointer">
+              Log In
             </button>
           </Link>
-          <Link href="/signup">
+          {/* <Link href="/signup">
             <button className="bg-green-500 text-sm px-3 py-1 rounded-xl font-bold hover:bg-blue-600 text-shadow-md cursor-pointer">
               Sign Up
             </button>
-          </Link>
+          </Link> */}
         </div>
       </header>
 
