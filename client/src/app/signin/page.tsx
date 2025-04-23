@@ -4,7 +4,6 @@ import { useRouter } from "next/navigation";
 import Link from "next/link";
 import axios from "axios";
 
-
 const SigninPage = () => {
   const [formData, setFormData] = useState({
     email: "",
@@ -21,36 +20,37 @@ const SigninPage = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-  
+
     try {
-      const res = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/api/signin`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(formData),
-      });
-  
-      const data = await res.json();
-  
-      if (res.ok) {
+      const res = await axios.post(
+        `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/signin`,
+        formData,
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
+
+      if (res.status === 200) {
         setError("");
         router.push("/success"); // ✅ redirect after success
-      } else {
-        setError(data.message || "Invalid email or password");
       }
-    } catch (error) {
-      setError("Something went wrong. Please try again.");
-      console.error(error);
+    } catch (err: any) {
+      if (err.response && err.response.data && err.response.data.message) {
+        setError(err.response.data.message);
+      } else {
+        setError("Something went wrong. Please try again.");
+      }
+      console.error(err);
     }
   };
-  
 
   return (
     <main className="min-h-screen bg-zinc-900 text-white flex flex-col items-center px-4 py-12">
       {/* Aawaz.amu heading */}
       <Link href="/" className="text-3xl font-extrabold text-white mb-5 mt-25">
-       📢Aawaz.amu
+        📢Aawaz.amu
       </Link>
 
       <div className="max-w-md w-full bg-zinc-800 rounded-xl shadow-lg p-8">

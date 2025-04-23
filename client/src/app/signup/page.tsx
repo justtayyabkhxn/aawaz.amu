@@ -44,9 +44,14 @@ const SignupPage = () => {
         if (response.status === 201) {
           router.push("/signin");
         }
-      } catch (err: any) {
-        setError(err.response?.data?.error || "Signup failed");
+      } catch (err: unknown) {
+        if (axios.isAxiosError(err)) {
+          setError(err.response?.data?.error || "Signup failed");
+        } else {
+          setError("Signup failed");
+        }
       }
+      
     } else {
       setError("Please fill in all fields.");
     }
