@@ -2,8 +2,11 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
+import axios from "axios"; // Import axios
+
 
 const SignupPage = () => {
+  
   const [formData, setFormData] = useState({
     email: "",
     password: "",
@@ -19,7 +22,7 @@ const SignupPage = () => {
     setFormData((prevData) => ({ ...prevData, [name]: value }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
     if (formData.password !== formData.confirmPassword) {
@@ -29,13 +32,28 @@ const SignupPage = () => {
 
     if (formData.email && formData.password) {
       setError("");
-      router.push("/signin");
+      
+      try {
+        // Send POST request to the server to create a new user
+        const response = await axios.post(`${process.env.NEXT_PUBLIC_API_BASE_URL}/api/signup`, {
+          email: formData.email,
+          password: formData.password,
+        });
+
+        // If signup is successful, redirect to signin page
+        if (response.status === 201) {
+          router.push("/signin");
+        }
+      } catch (err: any) {
+        setError(err.response?.data?.error || "Signup failed");
+      }
     } else {
       setError("Please fill in all fields.");
     }
   };
 
   return (
+    
     <main className="min-h-screen bg-zinc-900 text-white flex flex-col items-center px-4 py-12">
       {/* Site Heading */}
       <h2

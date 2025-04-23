@@ -2,6 +2,8 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
+import axios from "axios";
+
 
 const SigninPage = () => {
   const [formData, setFormData] = useState({
@@ -17,19 +19,32 @@ const SigninPage = () => {
     setFormData((prevData) => ({ ...prevData, [name]: value }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-
-    if (
-      formData.email === "test@example.com" &&
-      formData.password === "password"
-    ) {
-      setError("");
-      router.push("/");
-    } else {
-      setError("Invalid email or password.");
+  
+    try {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/api/signin`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+  
+      const data = await res.json();
+  
+      if (res.ok) {
+        setError("");
+        router.push("/success"); // ✅ redirect after success
+      } else {
+        setError(data.message || "Invalid email or password");
+      }
+    } catch (error) {
+      setError("Something went wrong. Please try again.");
+      console.error(error);
     }
   };
+  
 
   return (
     <main className="min-h-screen bg-zinc-900 text-white flex flex-col items-center px-4 py-12">
