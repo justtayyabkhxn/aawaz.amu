@@ -34,7 +34,7 @@ const SignupPage = () => {
       try {
         // Send POST request to the server to create a new user
         const response = await axios.post(
-          `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/signup`,
+          `${process.env.NEXT_PUBLIC_API_BASE_URL}api/signup`,
           {
             email: formData.email,
             password: formData.password,
