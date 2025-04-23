@@ -4,9 +4,7 @@ import { useRouter } from "next/navigation";
 import Link from "next/link";
 import axios from "axios"; // Import axios
 
-
 const SignupPage = () => {
-  
   const [formData, setFormData] = useState({
     email: "",
     password: "",
@@ -32,13 +30,16 @@ const SignupPage = () => {
 
     if (formData.email && formData.password) {
       setError("");
-      
+
       try {
         // Send POST request to the server to create a new user
-        const response = await axios.post(`${process.env.NEXT_PUBLIC_API_BASE_URL}/api/signup`, {
-          email: formData.email,
-          password: formData.password,
-        });
+        const response = await axios.post(
+          `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/signup`,
+          {
+            email: formData.email,
+            password: formData.password,
+          }
+        );
 
         // If signup is successful, redirect to signin page
         if (response.status === 201) {
@@ -51,30 +52,33 @@ const SignupPage = () => {
           setError("Signup failed");
         }
       }
-      
     } else {
       setError("Please fill in all fields.");
     }
   };
 
   return (
-    
     <main className="min-h-screen bg-zinc-900 text-white flex flex-col items-center px-4 py-12">
       {/* Site Heading */}
       <h2
         className="text-3xl font-bold mb-6 mt-10 text-white cursor-pointer "
         onClick={() => router.push("/")}
       >
-       📢Aawaz.amu
+        📢Aawaz.amu
       </h2>
 
       <div className="max-w-md w-full bg-zinc-800 rounded-xl shadow-lg p-8">
-        <h1 className="text-4xl font-bold text-center mb-8 text-white">Sign Up</h1>
+        <h1 className="text-4xl font-bold text-center mb-8 text-white">
+          Sign Up
+        </h1>
 
         <form onSubmit={handleSubmit} className="space-y-6">
           {/* Email */}
           <div>
-            <label htmlFor="email" className="block text-sm font-medium text-white">
+            <label
+              htmlFor="email"
+              className="block text-sm font-medium text-white"
+            >
               Email
             </label>
             <input
@@ -90,7 +94,10 @@ const SignupPage = () => {
 
           {/* Password */}
           <div>
-            <label htmlFor="password" className="block text-sm font-medium text-white">
+            <label
+              htmlFor="password"
+              className="block text-sm font-medium text-white"
+            >
               Password
             </label>
             <div className="relative">
@@ -115,7 +122,10 @@ const SignupPage = () => {
 
           {/* Confirm Password */}
           <div>
-            <label htmlFor="confirmPassword" className="block text-sm font-medium text-white">
+            <label
+              htmlFor="confirmPassword"
+              className="block text-sm font-medium text-white"
+            >
               Confirm Password
             </label>
             <div className="relative">

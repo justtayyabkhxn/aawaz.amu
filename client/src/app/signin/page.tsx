@@ -36,13 +36,14 @@ const SigninPage = () => {
         setError("");
         router.push("/success"); // ✅ redirect after success
       }
-    } catch (err: any) {
-      if (err.response && err.response.data && err.response.data.message) {
+    } catch (err: unknown) {
+      if (axios.isAxiosError(err) && err.response?.data?.message) {
         setError(err.response.data.message);
       } else {
         setError("Something went wrong. Please try again.");
       }
       console.error(err);
+    }
     }
   };
 
