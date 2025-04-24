@@ -36,7 +36,14 @@ const SigninPage = () => {
   
       if (res.ok) {
         setError("");
-        router.push("/success"); // ✅ redirect after success
+  
+        // ✅ Store token in localStorage
+        if (data.token) {
+          localStorage.setItem("token", data.token);
+        }
+  
+        // ✅ Redirect after login
+        router.push("/success");
       } else {
         setError(data.message || "Invalid email or password");
       }
@@ -46,9 +53,10 @@ const SigninPage = () => {
       } else {
         setError("Something went wrong. Please try again.");
       }
-      console.error(error);
+      console.error(err);
     }
   };
+  
   
 
   return (
