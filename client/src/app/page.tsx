@@ -39,20 +39,21 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-zinc-900 text-white">
       {/* Header */}
-      <header className="flex justify-between items-center px-6 py-4 border-b border-zinc-700">
-        <h1 className="text-2xl font-bold text-white">📢 Aawaz.amu</h1>
-        <div className="space-x-4">
+      <header className="flex justify-between items-center px-3 py-4 border-b border-zinc-700">
+      <h1 className="text-lg sm:text-xl md:text-2xl font-bold text-white"> 📢 Aawaz.amu</h1>
+
+        <div className="space-x-2">
           {username ? (
-            <div className="flex items-center gap-4">
-              <span className="text-md font-bold text-orange-300">
-                Welcome, {username}
+            <div className="flex items-center gap-6  ml-2">
+              <span className="text-lg sm:text-xl md:text-2xl font-bold text-orange-300">
+                 {username}
               </span>
               <button
                 onClick={() => {
                   localStorage.removeItem("token");
                   window.location.reload(); // refresh the page
                 }}
-                className="bg-red-500 text-white cursor-pointer px-3 py-1 rounded-xl text-md font-bold hover:bg-red-600 transition text-shadow-lg/15"
+                className="bg-red-500 text-white cursor-pointer px-3 py-1 rounded-xl text-lg sm:text-xl md:text-2xl font-bold hover:bg-red-600 transition text-shadow-lg/15"
               >
                 Log Out
               </button>
