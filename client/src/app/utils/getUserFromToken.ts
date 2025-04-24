@@ -11,6 +11,7 @@ export const getUserIdFromToken = (token: string): string | null => {
     const decoded = jwtDecode<DecodedToken>(token);
     return decoded.id;
   } catch (error) {
-    return null;
+    console.log(error)
+    return null ;
   }
 };
